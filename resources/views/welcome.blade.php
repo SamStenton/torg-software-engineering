@@ -18,10 +18,10 @@
             <div class="col-sm-8">
                 <nav>
                     <ul>
-                        <a href=""><li>Home</li></a>
-                        <a href=""><li>About</li></a>
-                        <a href=""><li>Register</li></a>
-                        <a href=""><li>Login</li></a>
+                        <a href="/"><li>Home</li></a>
+                        <!-- <a href="#about"><li>About</li></a> -->
+                        <a href="/register"><li>Register</li></a>
+                        <a href="/login"><li>Login</li></a>
                     </ul>
                 </nav>
             </div>
