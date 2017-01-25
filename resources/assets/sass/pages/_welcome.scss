@@ -1,0 +1,9 @@
+#homepage {
+        background: $brand-primary;
+        color: white;
+        a {color: white;}
+
+        @import "welcome/header";
+        @import "welcome/about";
+        @import "welcome/steps";
+}

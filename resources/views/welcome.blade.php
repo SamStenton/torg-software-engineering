@@ -1,95 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <title>Torg</title>
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+</head>
+<body id="homepage">
+    <div class="container">
+      <header>
+        <div class="row">
+            <div class="col-sm-4">
+                <h1>Torg.</h1>
+            </div>
+            <div class="col-sm-8">
+                <nav>
+                    <ul>
+                        <a href=""><li>Home</li></a>
+                        <a href=""><li>About</li></a>
+                        <a href=""><li>Register</li></a>
+                        <a href=""><li>Login</li></a>
+                    </ul>
+                </nav>
             </div>
         </div>
-    </body>
+          <section>
+              <h2>Connect, Chat, Play</h2>
+              <p>Find like-minded people to play your favourite game with.</p>
+          </section>
+      </header>
+    </div>
+
+    <section class="about container-fluid no-padding">
+        <div class="container center-block">
+            <h3>Play with quality gamers</h3>
+            <p>Create or join a lobby for your favourite game and allow Torg to connect you to others genuinly interested in having a good game. Keep track of who won each game and save the results for bragging rights.  </p>
+        </div>
+    </section>
+
+    <section class="steps container center-block">
+        <h3>Not sure where to start?</h3>
+        <small>We've got you</small>
+
+        <div class="the-steps row">
+            <div class="col-sm-4">
+                <h4>Step 1</h4>
+                <p>Create an account</p>
+            </div>
+
+            <div class="col-sm-4">
+                <h4>Step 2</h4>
+                <p>Join a lobby</p>
+            </div>
+
+            <div class="col-sm-4">
+                <h4>Step 3</h4>
+                <p>Get Gaming!</p>
+            </div>
+        </div>
+    </section>
+    
+</body>
 </html>

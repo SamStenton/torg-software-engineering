@@ -1,0 +1,14 @@
+section.about {
+    background: $brand-secondary;
+    transform: skewY(-4deg);
+    transform-origin: 50;
+    min-height: 300px;
+    margin-top: 50px;
+
+    .container {
+        margin-top: 30px;
+        transform: skewY(4deg);
+        transform-origin: 0;    }
+
+    p {max-width: 500px; margin: auto;}
+}
