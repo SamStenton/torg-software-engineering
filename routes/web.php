@@ -18,4 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout');
+
 Route::get('/dashboard', 'DashboardController@index');
+
+Route::get('/lobby/create', ['as' => 'lobby.create', 'uses' => 'LobbyController@create']);
+Route::post('/lobby/store', ['as' => 'lobby.store', 'uses' => 'LobbyController@store']);
+Route::get('/lobby/{lobby}', ['as' => 'lobby.index', 'uses' => 'LobbyController@index']);

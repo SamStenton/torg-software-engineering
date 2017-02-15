@@ -1,0 +1,25 @@
+header {
+    width: 100%;
+
+    section {
+        height: 80px;
+        background: white;
+    }
+
+    section#profile {
+        display: flex;
+        background: $brand-secondary;
+    }
+
+    section#top {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        margin-bottom: 20px;
+        button {
+            background: $brand-primary;
+            color: white;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+#dashboard {
+        
+        @import "dashboard/header";
+        @import "dashboard/sidebar";
+        @import "dashboard/lobby";
+        .panel {padding: 10px;}
+        .game-item {
+            // background: black;
+            div {
+                margin: 10px 5px 10px 5px;
+                height: 200px;
+                display: block;
+                background: grey;
+            }
+        }
+}

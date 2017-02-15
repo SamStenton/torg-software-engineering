@@ -1,4 +1,15 @@
+@import './modules/profile';
+
 .no-padding {
     padding: 0;
 }
 .center-block {text-align: center;}
+
+.circle {
+    width: 45px;
+    height: 45px;
+    display: block;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}

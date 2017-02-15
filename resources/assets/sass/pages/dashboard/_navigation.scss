@@ -1,0 +1,22 @@
+
+    aside {
+        margin-top: -20px;
+        display: flex;
+        flex-direction: column;
+        background: $brand-primary;
+        color: white;
+        nav {
+            ul {
+                list-style-type: none;
+                li {
+                    margin: 30px 0 0 30px;
+                    font-size: 18px;
+                    i {margin-right: 20px;}
+                    a {color: white;}
+                }
+            }
+        }
+
+        @import './progress';
+    }
+

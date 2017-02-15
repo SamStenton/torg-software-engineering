@@ -1,0 +1,21 @@
+section {
+    text-align: center;
+    margin-top: 50px;
+    .level__progress {
+        display: flex;
+        height: 200px;
+        width: 200px;
+        border-radius: 100px;
+        background: transparent;
+        border: 10px solid $brand-secondary;
+        margin: auto;
+        .level__info {
+            margin: auto;
+            .info__points {
+                font-size: 3em;
+                span {font-size: 30%;}
+            }
+        }
+    }
+
+}

@@ -1,0 +1,16 @@
+.mini-profile {
+    display: flex;
+    color: white;
+    justify-content: flex-start;
+    align-items: center;
+    h3, p {
+        margin: 0;
+        small {color:white;}
+    }
+    p {opacity: 0.7; margin-bottom: -10px; font-size: 10px;}
+    .profile__photo {
+        background: $brand-primary;
+        margin-right: 10px;
+        overflow: hidden;
+    }
+}
