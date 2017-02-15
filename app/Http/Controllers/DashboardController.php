@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Lobby;
 
 class DashboardController extends Controller
 {
@@ -22,7 +23,8 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('dashboard/index');
+    {   
+        $lobbies = Lobby::all();
+        return view('dashboard/index', compact('lobbies'));
     }
 }
