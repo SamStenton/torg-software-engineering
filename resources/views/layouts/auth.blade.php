@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Torg') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
