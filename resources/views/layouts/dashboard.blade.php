@@ -40,7 +40,7 @@
         <aside class="col-md-2">
             <nav>
                 <ul>
-                    <li><i class="fa fa-ticket fa-2x" aria-hidden="true"></i><a href="">Dashboard</a></li>
+                    <li><i class="fa fa-ticket fa-2x" aria-hidden="true"></i><a href="/dashboard">Dashboard</a></li>
                     <li><i class="fa fa-ticket fa-2x" aria-hidden="true"></i><a href="">Profile</a></li>
                     <li><i class="fa fa-ticket fa-2x" aria-hidden="true"></i><a href="">Messages</a></li>
                     <li><i class="fa fa-ticket fa-2x" aria-hidden="true"></i><a href="">Settings</a></li>
@@ -57,7 +57,7 @@
                 </div>
             </section>
         </aside>
-        <article class="col-md-10 container">
+        <article id="app" class="col-md-10 container">
             @yield('content')
         </article>
     </main>
