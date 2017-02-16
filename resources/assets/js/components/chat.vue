@@ -7,7 +7,12 @@
         <input type="text" v-model="message" @keyup.enter="sendMessage">
     </div>
 </template>
-
+<style>
+    .messages {
+        height: 250px;
+        overflow: scroll;
+    }
+</style>
 <script>
     export default {
         props: ['lobby'],
@@ -15,32 +20,35 @@
             return {
                 messages: [],
                 message: '',
-                echo: null
+                echoObject: null
             }
         },
         mounted() {
-            console.log('Component mounted.')
-            this.echo = Echo.join(`lobby.${this.lobby.slug}.chat`);
+            this.echoObject = Echo.join(`lobby.${this.lobby.slug}.chat`);
             this.listen()
         },
         methods: {
+            pushMessage(message){
+                this.messages.push(message)
+                this.updateScroll()
+            },
             listen() {
-                this.echo.listenForWhisper('message', (e) => {
-                    this.messages.push(e)
+                this.echoObject.listenForWhisper('message', (e) => {
+                    this.pushMessage(e)
                 });
             },
-
             sendMessage() {
-                this.messages.push({
+                var message = {
                     user: 'testing',
                     message: this.message
-                })
-                this.echo.whisper('message', {
-                   user: 'test',
-                   message: this.message
-                });
-
+                }
+                this.pushMessage(message);
+                this.echoObject.whisper('message', message);
                 this.message = "";
+            },
+            updateScroll() {
+                var element = document.getElementsByClassName("messages")[0];
+                element.scrollTop = element.scrollHeight;
             }
         }
     }
