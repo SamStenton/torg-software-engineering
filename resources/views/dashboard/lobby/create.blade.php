@@ -34,7 +34,7 @@
 
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" name="competative"> Competative
+                  <input type="checkbox" name="competative"> Competitive
                 </label>
               </div>
               <button type="submit" class="btn btn-default">Create Lobby</button>
