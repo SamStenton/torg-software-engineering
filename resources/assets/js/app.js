@@ -16,6 +16,8 @@ require('./bootstrap');
 Vue.component('players', require('./components/players.vue'));
 Vue.component('chat', require('./components/chat.vue'));
 
+window.bus = new Vue();
+
 const app = new Vue({
     el: '#app'
 });

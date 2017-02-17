@@ -15,7 +15,7 @@
 
       <div class="col-md-6">
           <div class="col-md-12 panel">
-              <chat :lobby="{{ $lobby }}"></chat>
+              <chat :lobby="{{ $lobby }}" :user="{{ $user }}"></chat>
           </div>
           <div class="col-md-12 panel">
             Vote: <small>none</small>

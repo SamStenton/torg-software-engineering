@@ -33,6 +33,7 @@
                     })
                     .joining((user) => {
                         this.players.push(user)
+                        bus.$emit('playerJoined', user)
                         console.log("Joining: " + user.name);
                     })
                     .leaving((user) => {

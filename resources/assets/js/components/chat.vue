@@ -1,8 +1,7 @@
 <template>
     <div>
         <div class="messages">
-          <p v-for="message in messages"><strong>...: </strong>{{ message.message }}</p>
-
+          <p v-for="message in messages"><strong>{{ message.user }}: </strong>{{ message.message }}</p>
         </div>
         <input type="text" v-model="message" @keyup.enter="sendMessage">
     </div>
@@ -15,7 +14,7 @@
 </style>
 <script>
     export default {
-        props: ['lobby'],
+        props: ['lobby', 'user'],
         data() {
             return {
                 messages: [],
@@ -26,6 +25,15 @@
         mounted() {
             this.echoObject = Echo.join(`lobby.${this.lobby.slug}.chat`);
             this.listen()
+        },
+        created() {
+            var self = this;
+            bus.$on('playerJoined', function (player) {
+              self.pushMessage({
+                user: 'info',
+                message: player.name + " joined."
+              });
+            })
         },
         methods: {
             pushMessage(message){
@@ -39,7 +47,7 @@
             },
             sendMessage() {
                 var message = {
-                    user: 'testing',
+                    user: this.user.username,
                     message: this.message
                 }
                 this.pushMessage(message);
