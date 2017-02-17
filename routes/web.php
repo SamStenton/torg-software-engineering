@@ -24,3 +24,7 @@ Route::get('/dashboard', 'DashboardController@index');
 Route::get('/lobby/create', ['as' => 'lobby.create', 'uses' => 'LobbyController@create']);
 Route::post('/lobby/store', ['as' => 'lobby.store', 'uses' => 'LobbyController@store']);
 Route::get('/lobby/{lobby}', ['as' => 'lobby.index', 'uses' => 'LobbyController@index']);
+
+Route::get('/messages', ['as' => 'messages.index', 'uses' => 'MessagesController@index']);
+
+Route::get('/message/{user}', ['as' => 'message.index', 'uses' => 'MessageController@index']);
