@@ -11252,6 +11252,7 @@ __webpack_require__(33);
 
 Vue.component('players', __webpack_require__(41));
 Vue.component('chat', __webpack_require__(40));
+Vue.component('vote', __webpack_require__(58));
 
 var app = new Vue({
   el: '#app'
@@ -45778,6 +45779,94 @@ module.exports = function(module) {
 __webpack_require__(11);
 module.exports = __webpack_require__(12);
 
+
+/***/ }),
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    props: ['lobby', 'user'],
+    data: function data() {
+        return {
+            type: 'basic',
+            end_time: null,
+            votes: []
+        };
+    },
+    mounted: function mounted() {},
+
+    methods: {
+        castVote: function castVote(vote) {
+            this.votes.push({ id: 1, username: 'Sam', vote: vote });
+            this.$emit('voted', { id: 1, username: 'Sam' });
+        }
+    }
+};
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(9)(
+  /* script */
+  __webpack_require__(57),
+  /* template */
+  __webpack_require__(59),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/sam/code/sites/torg/resources/assets/js/components/vote.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] vote.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-47f9650e", Component.options)
+  } else {
+    hotAPI.reload("data-v-47f9650e", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div')
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-47f9650e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
