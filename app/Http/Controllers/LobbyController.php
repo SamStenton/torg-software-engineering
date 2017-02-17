@@ -22,5 +22,7 @@ class LobbyController extends Controller
         $lobby->user_id = \Auth::user()->id;
         $lobby->slug = str_slug($lobby->title);
         $lobby->save();
+
+        return Redirect(route('lobby.index', $lobby));
     }
 }
