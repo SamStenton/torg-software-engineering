@@ -10,7 +10,18 @@
                 margin: 10px 5px 10px 5px;
                 height: 200px;
                 display: block;
-                background: grey;
+                background-repeat: no-repeat;
+                background-size: 150% auto;
+
+                .details {
+                    color: white;
+                    text-align: center;
+                    font-size: 1.8em;
+                    opacity: 1s
+                }
+                &:hover {
+                    opacity: .7;
+                }
             }
         }
 }

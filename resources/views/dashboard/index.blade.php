@@ -6,7 +6,9 @@
     @foreach ($lobbies as $lobby)
         <a href="{{ route('lobby.index', $lobby->slug) }}">
             <div class="col-sm-3 game-item">
-                <div>{{ $lobby->title }}</div>
+                <div style="background-image: url('images/battlefieldbackground.jpg')">
+                    <div class="details">{{ $lobby->title }} <br /> Battlefield 1</div>
+                </div>
             </div>
         </a>
     @endforeach
