@@ -12255,6 +12255,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     props: ['lobby', 'user'],
@@ -36895,6 +36910,10 @@ module.exports = Component.exports
 /* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(61)
+
 var Component = __webpack_require__(4)(
   /* script */
   __webpack_require__(33),
@@ -36972,21 +36991,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
+  return _c('div', [_c('strong', [_vm._v("Vote: Who Won")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', [_c('div', {
     staticClass: "vote-option",
     on: {
       "click": function($event) {
         _vm.castVote('one')
       }
     }
-  }, [_vm._v("\n        Vote One\n    ")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n            Team One\n        ")]), _vm._v(" "), _c('div', {
     staticClass: "vote-option",
     on: {
       "click": function($event) {
         _vm.castVote('two')
       }
     }
-  }, [_vm._v("\n        Vote Two\n    ")])])
+  }, [_vm._v("\n            Team Two\n        ")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -45929,6 +45948,53 @@ module.exports = function(module) {
 __webpack_require__(11);
 module.exports = __webpack_require__(12);
 
+
+/***/ }),
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(37)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.vote-option {\n    display: inline-block;\n    height: 50px;\n    margin-left: 10px;\n    padding: 10px;\n    cursor: pointer;\n    background: grey;\n    color: white;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(60);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(48)("99c09e30", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-47f9650e!./../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./vote.vue", function() {
+     var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-47f9650e!./../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./vote.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

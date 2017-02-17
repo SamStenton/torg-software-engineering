@@ -14,6 +14,8 @@
                 <label for="game">Select Game</label>
                 <select class="form-control" name="game" id="game">
                     <option value="1">Battlefield 1</option>
+                    <option value="2">Call Of Duty</option>
+                    <option value="3">League Of Legends</option>
                 </select>
               </div>
 
