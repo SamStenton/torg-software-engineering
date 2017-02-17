@@ -28,7 +28,7 @@
         </div>
           <section>
               <h2>Connect, Chat, Play</h2>
-              <p>Find like-minded people to play your favourite game with.</p>
+              <p>Find like-minded people to play your favourite games with.</p>
           </section>
       </header>
     </div>
@@ -36,7 +36,7 @@
     <section class="about container-fluid no-padding">
         <div class="container center-block">
             <h3>Play with quality gamers</h3>
-            <p>Create or join a lobby for your favourite game and allow Torg to connect you to others genuinly interested in having a good game. Keep track of who won each game and save the results for bragging rights.  </p>
+            <p>Create or join a lobby for your favourite games and allow Torg to connect you to others genuinely interested in having a good game. Keep track of who won each match and save the results for bragging rights.  </p>
         </div>
     </section>
 
