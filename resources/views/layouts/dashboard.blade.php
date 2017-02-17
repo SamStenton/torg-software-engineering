@@ -44,7 +44,7 @@
                     <li><i class="fa fa-user fa-2x" aria-hidden="true"></i><a href="">Profile</a></li>
                     <li><i class="fa fa-comments-o fa-2x" aria-hidden="true"></i><a href="">Messages</a></li>
                     <li><i class="fa fa-sliders fa-2x" aria-hidden="true"></i><a href="">Settings</a></li>
-                    <li><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i><a href="">Logout</a></li>
+                    <li><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i><a href="/logout">Logout</a></li>
                 </ul>
             </nav>
 
