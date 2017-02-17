@@ -17,6 +17,8 @@ Vue.component('players', require('./components/players.vue'));
 Vue.component('chat', require('./components/chat.vue'));
 Vue.component('vote', require('./components/vote.vue'));
 
+window.bus = new Vue();
+
 const app = new Vue({
     el: '#app'
 });
