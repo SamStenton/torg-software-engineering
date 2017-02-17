@@ -22,3 +22,7 @@ Broadcast::channel('lobby.*.list', function ($user) {
 Broadcast::channel('lobby.*.chat', function ($user) {
         return $user;
 });
+
+Broadcast::channel('lobby.*.vote', function ($user) {
+        return $user;
+});

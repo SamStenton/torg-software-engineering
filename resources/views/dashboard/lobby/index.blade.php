@@ -18,17 +18,7 @@
               <chat :lobby="{{ $lobby }}" :user="{{ $user }}"></chat>
           </div>
           <div class="col-md-12 panel">
-            Vote: <small>none</small>
-            <a href="">
-              <div class="vote-option">
-                Team 1
-              </div>
-            </a>
-            <a href="">
-              <div class="vote-option">
-                Team 2
-              </div>
-            </a>
+              <vote :lobby="{{ $lobby }}" :user="{{ $user }}"></vote>
           </div>
       </div>
 

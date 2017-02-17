@@ -33,6 +33,11 @@
                 user: 'info',
                 message: player.name + " joined."
               });
+            }).$on('voted', function(player) {
+                self.pushMessage({
+                  user: 'vote',
+                  message: player.username + " voted."
+                });
             })
         },
         methods: {
@@ -41,7 +46,8 @@
                 this.updateScroll()
             },
             listen() {
-                this.echoObject.listenForWhisper('message', (e) => {
+                this.echoObject
+                .listenForWhisper('message', (e) => {
                     this.pushMessage(e)
                 });
             },
