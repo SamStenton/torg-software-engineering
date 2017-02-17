@@ -1,15 +1,30 @@
 <template>
     <div>
-        <div @click="castVote('one')" class="vote-option">
-            Vote One
-        </div>
+        <strong>Vote: Who Won</strong>
+        <br>
+        <br>
+        <div>
+            <div @click="castVote('one')" class="vote-option">
+                Team One
+            </div>
 
-        <div @click="castVote('two')" class="vote-option">
-            Vote Two
+            <div @click="castVote('two')" class="vote-option">
+                Team Two
+            </div>
         </div>
     </div>
 </template>
-
+<style>
+    .vote-option {
+        display: inline-block;
+        height: 50px;
+        margin-left: 10px;
+        padding: 10px;
+        cursor: pointer;
+        background: grey;
+        color: white;
+    }
+</style>
 <script>
     export default {
         props: ['lobby', 'user'],
