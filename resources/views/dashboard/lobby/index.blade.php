@@ -18,7 +18,7 @@
               <chat :lobby="{{ $lobby }}" :user="{{ $user }}"></chat>
           </div>
           <div class="col-md-12 panel">
-              <vote :lobby="{{ $lobby }}"></vote>
+              <vote :lobby="{{ $lobby }}" :user="{{ $user }}"></vote>
           </div>
       </div>
 

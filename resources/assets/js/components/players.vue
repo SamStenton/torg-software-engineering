@@ -34,7 +34,7 @@
                     .joining((user) => {
                         this.players.push(user)
                         bus.$emit('playerJoined', user)
-                        console.log("Joining: " + user.name);
+                        console.log("Joining: " + user.username);
                     })
                     .leaving((user) => {
                         this.players.splice(this.players.indexOf(user), 1);
