@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Lobby extends Model
 {
+    use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +28,13 @@ class Lobby extends Model
     ];
 
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+    /**
      * Get the route key for the model.
      *
      * @return string
@@ -32,5 +42,24 @@ class Lobby extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    /**
+     * Get users that belong to the lobby.
+     * 
+     * @return Collection App\User
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'lobby_users');
+    }
+
+    /**
+     * Checks to see if the lobby can add more users.
+     * 
+     * @return Boolean
+     */
+    public function hasCapacity() {
+        return $this->users()->count() < $this->slots;
     }
 }
