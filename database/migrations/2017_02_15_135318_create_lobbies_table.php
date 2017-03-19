@@ -21,6 +21,7 @@ class CreateLobbiesTable extends Migration
             $table->integer('slots');
             $table->mediumText('info');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
