@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <title>Torg</title>
-    <meta name="test" content="loaderio-0d3e4ef483c804539792f9cb17d2251c">
 </head>
 <body id="homepage">
     <div class="container">

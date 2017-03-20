@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/loaderio-0d3e4ef483c804539792f9cb17d2251c.txt', function () {
+    return 'loaderio-0d3e4ef483c804539792f9cb17d2251c';
+});
 
 Auth::routes();
 
