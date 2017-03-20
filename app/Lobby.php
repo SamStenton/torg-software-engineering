@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use User; 
 
 class Lobby extends Model
 {
@@ -44,6 +45,12 @@ class Lobby extends Model
         return 'slug';
     }
 
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = str_slug($value);
+    }
+
     /**
      * Get users that belong to the lobby.
      * 
@@ -59,7 +66,29 @@ class Lobby extends Model
      * 
      * @return Boolean
      */
-    public function hasCapacity() {
+    public function hasCapacity()
+    {
         return $this->users()->count() < $this->slots;
+    }
+
+    public function userExistsInLobby(User $user)
+    {
+        return $this->user()->where('user_id', $user->id)->count() > 0;
+    }
+
+    public function addUser(User $user)
+    {
+        if (! $this->hasCapacity() || $this->userExistsInLobby($user)) {
+            return ;
+        }
+        $this->users()->attach($user->id);
+    }
+
+    public function removeUser(User $user)
+    {
+        if (! $this->userExistsInLobby($user)) {
+            # code...
+        }
+        $this->users()->detach($user->id);
     }
 }
