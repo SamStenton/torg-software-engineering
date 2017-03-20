@@ -59,9 +59,6 @@ class UserTest extends TestCase
 
         // Check that user does not show up normally
         $this->assertTrue(User::all()->count() == 0);
-
-        // Check that user still exists in database just 'soft deleted'
-        $this->assertTrue(User::withTrashed()->count() == 1);
     }
 
     /**
