@@ -8,8 +8,7 @@ use App\Lobby;
 class LobbyController extends Controller
 {
     public function index(Lobby $lobby) {
-        $user = \Auth::user();
-        return view('dashboard/lobby/index', compact('user', 'lobby'));
+        return view('dashboard/lobby/index', compact('lobby'));
     }
 
     public function create() {
