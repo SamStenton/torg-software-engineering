@@ -28,7 +28,7 @@
                 <div class="profile__photo circle"></div>
                 <div class="profile__info">
                     <p class="light info__level">Noob</p>
-                    <h3><small>Username</small></h3>
+                    <h3><small>{{ $user->username }}</small></h3>
                 </div>
             </div>
         </section>
