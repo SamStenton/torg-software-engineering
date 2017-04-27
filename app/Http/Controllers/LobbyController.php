@@ -33,10 +33,11 @@ class LobbyController extends Controller
     public function store(Request $request) {
         $lobby = new Lobby;
         $lobby->fill($request->all());
-        $lobby->user_id = \Auth::user()->id;
+        $lobby->user_id = $this->user->id;
         $lobby->slug = str_slug($lobby->title);
         $lobby->save();
 
+        $this->user->addScore(50, "Created lobby");
         return Redirect(route('lobby.index', $lobby));
     }
 }

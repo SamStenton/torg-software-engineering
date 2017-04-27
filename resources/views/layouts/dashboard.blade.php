@@ -51,8 +51,8 @@
             <section>
                 <div class="level__progress">
                     <div class="level__info">
-                        <div class="info__points">123<span>points</span></div>
-                        <div class="info__text">Until next level</div>
+                        <div class="info__points">{{ $user->currentScore() }}<span>points</span></div>
+                        {{-- <div class="info__text">Until next level</div> --}}
                     </div>
                 </div>
             </section>

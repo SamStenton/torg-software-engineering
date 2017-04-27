@@ -63,6 +63,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Relationship with score
+     *
+     * @return  Collection 
+     */
+    public function score()
+    {
+        return $this->hasMany('App\Score');
+    }
+
+
+    /**
      * Find if the current user is part of a currently open lobby.
      * 
      * @return Boolean
@@ -116,5 +127,29 @@ class User extends Authenticatable
         return self::where('username', $username)->first();
     }
 
+    public function addScore($amount, $reason = null)
+    {
+
+        $this->score()->create([
+            'user_id'   => $this->id,
+            'score'     => $amount,
+            'total'     => $this->currentScore() + $amount,
+            'reason'    => $reason
+        ]);
+    }
+
+    public function currentScore() 
+    {
+        if ($this->hasScore()) {
+            return $this->score()->orderBy('created_at', 'DESC')->first()->total;
+        }
+
+        return 0;
+    }
+
+    public function hasScore() 
+    {
+        return count($this->score) > 0;
+    }
 
 }
