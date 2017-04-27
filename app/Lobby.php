@@ -78,8 +78,9 @@ class Lobby extends Model
 
     public function join(User $user)
     {
-                if ($this->user->hasLobby() && !$this->user->lobby()->id == $lobby->id) {
-            $this->user->lobby()->leave($this->user);
+
+        if ($user->hasLobby() && !$user->lobby()->id == $this->id) {
+            $this->leave($user);
         }
 
         if (! $this->hasCapacity() || $this->userExistsInLobby($user)) {
