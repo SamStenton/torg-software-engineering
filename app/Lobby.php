@@ -70,12 +70,24 @@ class Lobby extends Model
     {
         return $this->users()->count() < $this->slots;
     }
-
+    
+    /**
+    * Checks to see if the user exists inside the lobby.
+    *
+    * @param user - The user inside the lobby
+    * @return Boolean
+    */
     public function userExistsInLobby(User $user)
     {
         return $this->users->where('id', $user->id)->count() > 0;
     }
-
+    
+    /**
+    * Checks to see if user is in the lobby and then joins the user to the game
+    *
+    * @param user - The user joining the game
+    * @return Boolean
+    */    
     public function join(User $user)
     {
 
@@ -88,7 +100,13 @@ class Lobby extends Model
         }
         $this->users()->attach($user->id);
     }
-
+    
+    /**
+    * Checks to see if user is in the lobby, then exits the user.
+    *
+    * @param user - The user inside the lobby to leave
+    * @return Boolean
+    */    
     public function leave(User $user)
     {
         if (! $this->userExistsInLobby($user)) {
