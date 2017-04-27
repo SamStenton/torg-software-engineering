@@ -83,6 +83,12 @@ class User extends Authenticatable
         return $this->lobbies()->exists();
     }
 
+     /**
+     * Join a user to a lobby.
+     * 
+     * @param Lobby $lobby The name of the lobby
+     * @return Boolean
+     */
     public function joinLobby(Lobby $lobby)
     {
         if ($this->hasLobby()) {
@@ -91,7 +97,13 @@ class User extends Authenticatable
 
         $this->lobbies()->attach($lobby->id);
     }
-
+    
+     /**
+     * Allow a user to leave a lobby.
+     * 
+     * @param Lobby $lobby The name of the lobby
+     * @return Boolean
+     */
     public function leaveLobby(Lobby $lobby)
     {
         if (! $this->hasLobby()) {
@@ -101,6 +113,12 @@ class User extends Authenticatable
         $this->lobbies()->detach($lobby->id);
     }
 
+     /**
+     * Add a friend to the users profile.
+     * 
+     * @param User $user the name of the user being added
+     * @return Boolean
+     */
     public function addFriend(User $user)
     {
         if ($this->isFriendWith($user)) {
@@ -108,7 +126,13 @@ class User extends Authenticatable
         }
         $this->friends()->attach($user->id);
     }
-
+    
+     /**
+     * Remove a friend from the users profile.
+     * 
+     * @param User $user The name of the user being removed
+     * @return Boolean
+     */
     public function removeFriend(User $user)
     {
         if (! $this->isFriendWith($user)) {
@@ -117,16 +141,35 @@ class User extends Authenticatable
         $this->friends()->detach($user->id);
     }
 
+     /**
+     * Checks to see if a user is friends with another user.
+     * 
+     * @param User $user The name of the user being compared with
+     * @return Boolean
+     */
     public function isFriendWith(User $user)
     {
         return $this->friends()->where('friend_id', $user->id)->count() > 0;
     }
 
+     /**
+     * Find a specific user by their unique username.
+     * 
+     * @param $username The username of the user
+     * @return string
+     */
     public static function findByUsername($username) 
     {
         return self::where('username', $username)->first();
     }
 
+     /**
+     * Add points to users profile.
+     * 
+     * @param $amount The amount of points being added
+     * @param $reason The reason the user is recieving the points
+     * @var array
+     */
     public function addScore($amount, $reason = null)
     {
 
@@ -138,6 +181,11 @@ class User extends Authenticatable
         ]);
     }
 
+     /**
+     * Check the current score of a user.
+     * 
+     * @return integer 
+     */
     public function currentScore() 
     {
         if ($this->hasScore()) {
@@ -147,6 +195,11 @@ class User extends Authenticatable
         return 0;
     }
 
+     /**
+     * Check to see if a user has over 0 points.
+     * 
+     * @return Boolean 
+     */
     public function hasScore() 
     {
         return count($this->score) > 0;
