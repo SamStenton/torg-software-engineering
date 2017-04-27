@@ -7,10 +7,25 @@ use App\Lobby;
 
 class LobbyController extends Controller
 {
-    public function index(Lobby $lobby) {
-        return view('dashboard/lobby/index', compact('lobby'));
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // Make the user available throughout the controller
+        $this->middleware(function ($request, $next) {
+            $this->user = \Auth::user();
+            return $next($request);
+        });
     }
 
+    public function index(Lobby $lobby) {
+        $lobby->join($this->user);
+        return view('dashboard/lobby/index', compact('lobby'));
+    }
+    
     public function create() {
         return view('dashboard/lobby/create');
     }

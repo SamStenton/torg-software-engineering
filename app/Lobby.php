@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use User; 
+use App\User; 
 
 class Lobby extends Model
 {
@@ -73,21 +73,25 @@ class Lobby extends Model
 
     public function userExistsInLobby(User $user)
     {
-        return $this->user()->where('user_id', $user->id)->count() > 0;
+        return $this->users->where('id', $user->id)->count() > 0;
     }
 
-    public function addUser(User $user)
+    public function join(User $user)
     {
+                if ($this->user->hasLobby() && !$this->user->lobby()->id == $lobby->id) {
+            $this->user->lobby()->leave($this->user);
+        }
+
         if (! $this->hasCapacity() || $this->userExistsInLobby($user)) {
             return ;
         }
         $this->users()->attach($user->id);
     }
 
-    public function removeUser(User $user)
+    public function leave(User $user)
     {
         if (! $this->userExistsInLobby($user)) {
-            # code...
+            return ;
         }
         $this->users()->detach($user->id);
     }
