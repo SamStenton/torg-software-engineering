@@ -1,6 +1,10 @@
 ## Torg
 Project running PHP7 using the <a href="laravel.com">Laravel Framework</a>
 
+<a href="http://torg.samuelstenton.com">Live Site</a>
+
+<a href="https://samstenton.github.io/torg-software-engineering/">Documentation</a>
+
 ### Setup Instructions
  You'll need the following installed on your system: 
 
