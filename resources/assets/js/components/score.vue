@@ -30,6 +30,7 @@
                 {
                     self.current = self.live;
                     self.addScore(50)
+                    bus.$emit('voteWon', {})
                 }
             })
         },
@@ -38,13 +39,7 @@
 
             },
             addScore(amount) {
-                self = this;
-                setTimeout(function() {
-                    self.live++
-                    if(self.live == (self.current + amount)) {
-                        clearTimeout(this)
-                    }
-                }, 50)
+                this.live = this.current + amount;
             }
 
         }

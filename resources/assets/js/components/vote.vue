@@ -111,7 +111,12 @@
                     this.vote = vote
                 })
                 .listenForWhisper('voteEnded', (winner) => {
-                    this.vote = vote
+                    this.vote = {
+                        title: null,
+                        type: null,
+                        status: null,
+                        options: [],
+                    }
                     bus.$emit('voteEnded', winner);
                 })
                 .listenForWhisper('userVoted', (user) => {

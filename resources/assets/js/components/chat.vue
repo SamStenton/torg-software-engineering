@@ -53,6 +53,12 @@
                   message: 'ended'
                 });
             })
+            .$on('voteWon', function(vote) {
+                self.pushMessage({
+                  user: 'vote',
+                  message: "You are the winner. +50 Points"
+                });
+            })
         },
         methods: {
             pushMessage(message){

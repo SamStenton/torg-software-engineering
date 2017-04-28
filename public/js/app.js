@@ -12456,6 +12456,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 user: 'vote',
                 message: 'ended'
             });
+        }).$on('voteWon', function (vote) {
+            self.pushMessage({
+                user: 'vote',
+                message: "You are the winner. +50 Points"
+            });
         });
     },
 
@@ -12595,6 +12600,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (self.user.username == winner.username) {
                 self.current = self.live;
                 self.addScore(50);
+                bus.$emit('voteWon', {});
             }
         });
     },
@@ -12602,13 +12608,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         listen: function listen() {},
         addScore: function addScore(amount) {
-            self = this;
-            setTimeout(function () {
-                self.live++;
-                if (self.live == self.current + amount) {
-                    clearTimeout(this);
-                }
-            }, 50);
+            this.live = this.current + amount;
         }
     }
 };
@@ -12724,7 +12724,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 bus.$emit('voteInitiated', vote);
                 _this2.vote = vote;
             }).listenForWhisper('voteEnded', function (winner) {
-                _this2.vote = vote;
+                _this2.vote = {
+                    title: null,
+                    type: null,
+                    status: null,
+                    options: []
+                };
                 bus.$emit('voteEnded', winner);
             }).listenForWhisper('userVoted', function (user) {
                 bus.$emit('voted', user);
@@ -37220,7 +37225,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/samuel/code/sites/torg/resources/assets/js/components/chat.vue"
+Component.options.__file = "/Users/sam/code/sites/torg/resources/assets/js/components/chat.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] chat.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -37254,7 +37259,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/samuel/code/sites/torg/resources/assets/js/components/players.vue"
+Component.options.__file = "/Users/sam/code/sites/torg/resources/assets/js/components/players.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] players.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -37288,7 +37293,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/samuel/code/sites/torg/resources/assets/js/components/score.vue"
+Component.options.__file = "/Users/sam/code/sites/torg/resources/assets/js/components/score.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] score.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -37326,7 +37331,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/samuel/code/sites/torg/resources/assets/js/components/vote.vue"
+Component.options.__file = "/Users/sam/code/sites/torg/resources/assets/js/components/vote.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] vote.vue: functional components are not supported with templates, they should use render functions.")}
 
