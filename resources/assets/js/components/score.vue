@@ -2,7 +2,7 @@
         <section>
             <div class="level__progress">
                 <div class="level__info">
-                    <div class="info__points">{{ live }}<span>points</span></div>
+                    <div id="score" class="info__points animated wobble">{{ live }}<span>points</span></div>
                     <!-- <div class="info__text">Until next level</div>  -->
                 </div>
             </div>
@@ -21,6 +21,7 @@
         mounted() {
             // this.echoObject = Echo.join(`lobby.${this.lobby.slug}.chat`);
             this.listen()
+            document.getElementById('score').classList.remove("wobble");
         },
         created() {
             var self = this;
@@ -30,6 +31,8 @@
                 {
                     self.current = self.live;
                     self.addScore(50)
+                    document.getElementById('score').classList.toggle("wobble");
+                    // document.getElementById('score').classList.remove("wobble");
                     bus.$emit('voteWon', {})
                 }
             })

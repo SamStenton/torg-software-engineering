@@ -12593,6 +12593,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         // this.echoObject = Echo.join(`lobby.${this.lobby.slug}.chat`);
         this.listen();
+        document.getElementById('score').classList.remove("wobble");
     },
     created: function created() {
         var self = this;
@@ -12600,6 +12601,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (self.user.username == winner.username) {
                 self.current = self.live;
                 self.addScore(50);
+                document.getElementById('score').classList.toggle("wobble");
+                // document.getElementById('score').classList.remove("wobble");
                 bus.$emit('voteWon', {});
             }
         });
@@ -37225,7 +37228,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/sam/code/sites/torg/resources/assets/js/components/chat.vue"
+Component.options.__file = "/Users/samuel/code/sites/torg/resources/assets/js/components/chat.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] chat.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -37259,7 +37262,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/sam/code/sites/torg/resources/assets/js/components/players.vue"
+Component.options.__file = "/Users/samuel/code/sites/torg/resources/assets/js/components/players.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] players.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -37293,7 +37296,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/sam/code/sites/torg/resources/assets/js/components/score.vue"
+Component.options.__file = "/Users/samuel/code/sites/torg/resources/assets/js/components/score.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] score.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -37331,7 +37334,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/sam/code/sites/torg/resources/assets/js/components/vote.vue"
+Component.options.__file = "/Users/samuel/code/sites/torg/resources/assets/js/components/vote.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] vote.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -37403,7 +37406,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "level__info"
   }, [_c('div', {
-    staticClass: "info__points"
+    staticClass: "info__points animated wobble",
+    attrs: {
+      "id": "score"
+    }
   }, [_vm._v(_vm._s(_vm.live)), _c('span', [_vm._v("points")])])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
