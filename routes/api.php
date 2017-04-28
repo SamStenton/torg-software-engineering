@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('lobby/{lobby}/initiate/{type}', ['as' => 'vote.initiate', 'uses' => 'VoteController@initiate']);
+Route::get('lobby/{lobby}/end/{type}', ['as' => 'vote.end', 'uses' => 'VoteController@end']);
+Route::post('lobby/{lobby}/vote', ['as' => 'vote.create', 'uses' => 'VoteController@create']);

@@ -25,7 +25,7 @@ class Lobby extends Model
      * @var array
      */
     protected $hidden = [
-        'user_id', 'id'
+        'user_id'
     ];
 
     /**
@@ -59,6 +59,16 @@ class Lobby extends Model
     public function users()
     {
         return $this->belongsToMany('App\User', 'lobby_users');
+    }
+
+    /**
+     * Get vote relation.
+     * 
+     * @return Collection App\Vote
+     */
+    public function votes()
+    {
+        return $this->hasMany('App\Vote');
     }
 
     /**
@@ -113,5 +123,10 @@ class Lobby extends Model
             return ;
         }
         $this->users()->detach($user->id);
+    }
+
+    public function currentVote()
+    {
+        return $this->votes()->where('ended', false)->first();
     }
 }

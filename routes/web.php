@@ -31,3 +31,5 @@ Route::get('/lobby/{lobby}', ['as' => 'lobby.index', 'uses' => 'LobbyController@
 Route::get('/messages', ['as' => 'messages.index', 'uses' => 'MessagesController@index']);
 
 Route::get('/message/{user}', ['as' => 'message.index', 'uses' => 'MessageController@index']);
+
+

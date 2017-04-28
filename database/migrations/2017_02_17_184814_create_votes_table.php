@@ -17,7 +17,7 @@ class CreateVotesTable extends Migration
             $table->increments('id');
             $table->integer('lobby_id');
             $table->string('type');
-            $table->timestamp('end_time');
+            $table->boolean('ended')->default(false);
             $table->timestamps();
         });
     }

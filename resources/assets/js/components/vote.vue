@@ -1,16 +1,22 @@
 <template>
     <div>
-        <strong>Vote: Who Won</strong>
-        <br>
-        <br>
-        <div>
-            <div @click="castVote('one')" class="vote-option">
-                Team One
+        <div v-if="admin">
+            <div v-if="vote.status == null" class="available-votes">
+                <p>Please select a type of vote to initiate</p>
+                <div @click="initiate('basic')" class="vote-option">Basic</div>
             </div>
-
-            <div @click="castVote('two')" class="vote-option">
-                Team Two
+            <div v-if="vote.status != null" class="vote-controls">
+                <div @click="end()" class="vote-option">End Vote</div>
             </div>
+        </div>
+        <div v-if="vote.status != null">
+            <h4>{{ vote.title }}</h4>
+            <div v-for="option in vote.options" @click="castVote(option.id)" class="vote-option">
+                {{ option.display }}
+            </div>
+        </div>
+        <div v-else>
+            <h5>There is nothing to vote on</h5>
         </div>
     </div>
 </template>
@@ -27,13 +33,16 @@
 </style>
 <script>
     export default {
-        props: ['lobby', 'user'],
+        props: {lobby: Object, user: Object, admin: Boolean},
         data() {
             return {
-                type: 'basic',
-                end_time: null, 
-                votes: [],
-                echoObject: null
+                echoObject: null,
+                vote: {
+                    title: null,
+                    type: null,
+                    status: null,
+                    options: [],
+                }
             }
         },
         mounted() {
@@ -41,38 +50,74 @@
             this.listen()
         },
         created() {
-            // var self = this;
-            // bus.$on('playerJoined', function (player) {
-            //   self.pushMessage({
-            //     user: 'info',
-            //     message: player.name + " joined."
-            //   });
-            // })
+
         },
         methods: {
-            castVote(vote) {
+            initiate(type) {
                 var self = this
-                var exists = this.votes.find(function(vote) {
-                    return vote.id == self.user.id
-                });
-
-                if (exists != undefined) {
-                    this.removeVote(exists)
-                }
-                this.votes.push({id: 1, username: 'Sam', vote: vote})
+                axios.get(`/api/lobby/${this.lobby.id}/initiate/${type}`)
+                  .then(function (response) {
+                    self.vote.type = type
+                    self.vote.status = 'running'
+                    self.vote.options = response.data.options
+                    self.vote.title = response.data.title
+                    self.echoObject.whisper('voteInitiated', self.vote); 
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
+                // bus.$emit('voteInitiated', self.vote)
+            },
+            end() {
+                var self = this
+                axios.get(`/api/lobby/${this.lobby.id}/end/${this.vote.type}`)
+                  .then(function (response) {
+                    self.vote = {
+                        title: null,
+                        type: null,
+                        status: null,
+                        options: [],
+                    }
+                    self.echoObject.whisper('voteEnded', response.data); 
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
+            },
+            castVote(vote) {
 
                 //Push to server
-                bus.$emit('voted', this.user)
+                axios.post(`/api/lobby/${this.lobby.id}/vote`, {
+                    user: this.user.id,
+                    vote: vote
+                  })
+                  .then(response => {
+                    this.echoObject.whisper('userVoted', this.user); 
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
             },
 
             removeVote(vote) {
-                this.votes .splice(this.votes.indexOf(vote), 1);
+                this.votes.splice(this.vote.responses.indexOf(vote), 1);
             },
 
             listen() {
-                this.echoObject.listenForWhisper('voted', (e) => {
-                    this.pushMessage(e)
+                this.echoObject
+                .listenForWhisper('voteInitiated', (vote) => {
+                    bus.$emit('voteInitiated', vote);
+                    this.vote = vote
+                })
+                .listenForWhisper('voteEnded', (winner) => {
+                    this.vote = vote
+                    bus.$emit('voteEnded', winner);
+                })
+                .listenForWhisper('userVoted', (user) => {
+                    bus.$emit('voted', user);
                 });
+
+
             },
         }
     }

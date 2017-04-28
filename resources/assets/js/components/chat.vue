@@ -28,15 +28,29 @@
         },
         created() {
             var self = this;
-            bus.$on('playerJoined', function (player) {
+            bus
+            .$on('playerJoined', function (player) {
               self.pushMessage({
                 user: 'info',
                 message: player.name + " joined."
               });
-            }).$on('voted', function(player) {
+            })
+            .$on('voted', function(player) {
                 self.pushMessage({
                   user: 'vote',
                   message: player.username + " voted."
+                });
+            })
+            .$on('voteInitiated', function(vote) {
+                self.pushMessage({
+                  user: 'vote created',
+                  message: vote.title
+                });
+            })
+            .$on('voteEnded', function(vote) {
+                self.pushMessage({
+                  user: 'vote',
+                  message: 'ended'
                 });
             })
         },
@@ -49,7 +63,8 @@
                 this.echoObject
                 .listenForWhisper('message', (e) => {
                     this.pushMessage(e)
-                });
+                })
+
             },
             sendMessage() {
                 var message = {

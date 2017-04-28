@@ -22,7 +22,9 @@ class LobbyController extends Controller
     }
 
     public function index(Lobby $lobby) {
+
         $lobby->join($this->user);
+
         return view('dashboard/lobby/index', compact('lobby'));
     }
     

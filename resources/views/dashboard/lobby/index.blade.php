@@ -18,7 +18,7 @@
               <chat :lobby="{{ $lobby }}" :user="{{ $user }}"></chat>
           </div>
           <div class="col-md-12 panel">
-              <vote :lobby="{{ $lobby }}" :user="{{ $user }}"></vote>
+             <vote :lobby="{{ $lobby }}" :user="{{ $user }}" :admin="@if($lobby->user_id == $user->id) true @else false @endif"></vote>
           </div>
       </div>
 
