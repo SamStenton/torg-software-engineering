@@ -1,7 +1,24 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="container">
+<div class="container" id="auth">
+    <header>
+      <div class="row">
+          <div class="col-sm-4">
+              <h1>Torg.</h1>
+          </div>
+          <div class="col-sm-8">
+              <nav>
+                  <ul>
+                      <a href="/"><li>Home</li></a>
+                      <!-- <a href="#about"><li>About</li></a> -->
+                      <a href="/register"><li>Register</li></a>
+                      <a href="/login"><li>Login</li></a>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+    </header>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
