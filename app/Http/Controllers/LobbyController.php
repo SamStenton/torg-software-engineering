@@ -21,6 +21,11 @@ class LobbyController extends Controller
         });
     }
 
+    /**
+     * Responds to a join lobby request
+     * @param  Lobby  $lobby    The lobby to join
+     * @return View        
+     */
     public function index(Lobby $lobby) {
 
         $lobby->join($this->user);
@@ -28,10 +33,19 @@ class LobbyController extends Controller
         return view('dashboard/lobby/index', compact('lobby'));
     }
     
+    /**
+     * Displays the lobby create form
+     * @return View 
+     */
     public function create() {
         return view('dashboard/lobby/create');
     }
 
+    /**
+     * Stores a lobby in the database and redirects the user to it
+     * @param  Request $request     The lobby details
+     * @return View           
+     */
     public function store(Request $request) {
         $lobby = new Lobby;
         $lobby->fill($request->all());

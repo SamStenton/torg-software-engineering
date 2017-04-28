@@ -45,6 +45,10 @@ class Vote extends Model
         return $this->belongsToMany('App\User', 'vote_users')->withPivot('vote_user_id');
     }
 
+    /**
+     * Add a vote from a user
+     * @param Array $params Array with user and vote
+     */
     public function add($params)
     {
         $user = User::find($params['user']);
@@ -52,11 +56,19 @@ class Vote extends Model
         $this->users()->attach($user->id, ['vote_user_id' => $params['vote']]);
     }
     
+    /**
+     * Returns the winning users of a vote 
+     * @return App\User Single User
+     */
     public function winner()
     {
        return User::find($this->users->groupBy('pivot_vote_user_id')->first()->first()->pivot->vote_user_id);
     }
 
+    /**
+     * Details for the basic vote type
+     * @return [type] [description]
+     */
     public function basic()
     {
         return Collect([
@@ -69,7 +81,5 @@ class Vote extends Model
             })
         ]);
     }
-
-
     
 }

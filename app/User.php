@@ -47,6 +47,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Lobby', 'lobby_users');
     }
 
+    /**
+     * Returns the users current lobby
+     * @return App\Lobby 
+     */
     public function lobby()
     {
         return $this->lobbies->first();

@@ -45,6 +45,10 @@ class Lobby extends Model
         return 'slug';
     }
 
+    /**
+     * Dynamically creates the Lobby Slug value on save
+     * @param String $value 
+     */
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
@@ -125,6 +129,10 @@ class Lobby extends Model
         $this->users()->detach($user->id);
     }
 
+    /**
+     * Gets the current vote for the lobby
+     * @return App\Vote Vote Item
+     */
     public function currentVote()
     {
         return $this->votes()->where('ended', false)->first();
