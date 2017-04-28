@@ -78,6 +78,7 @@
                         status: null,
                         options: [],
                     }
+                    bus.$emit('voteEnded', response.data);
                     self.echoObject.whisper('voteEnded', response.data); 
                   })
                   .catch(function (error) {

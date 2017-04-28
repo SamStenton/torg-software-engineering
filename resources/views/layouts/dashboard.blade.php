@@ -22,46 +22,41 @@
     </script>
 </head>
 <body id="dashboard">
-    <header class="container-fluid no-padding">
-        <section id="profile" class="col-md-2">
-            <div class="mini-profile">
-                <div class="profile__photo circle"></div>
-                <div class="profile__info">
-                    <p class="light info__level">Noob</p>
-                    <h3><small>{{ $user->username }}</small></h3>
-                </div>
-            </div>
-        </section>
-        <section id="top" class="col-md-10">
-            <a href="{{ route('lobby.create') }}"><button class="btn">Create Lobby</button></a>
-        </section>
-    </header>
-    <main class="container-fluid no-padding">
-        <aside class="col-md-2">
-            <nav>
-                <ul>
-                    <li><i class="fa fa-ticket fa-2x" aria-hidden="true"></i><a href="/dashboard">Dashboard</a></li>
-                    <li><i class="fa fa-user fa-2x" aria-hidden="true"></i><a href="">Profile</a></li>
-                    <li><i class="fa fa-comments-o fa-2x" aria-hidden="true"></i><a href="{{ route('messages.index') }}">Messages</a></li>
-                    <li><i class="fa fa-sliders fa-2x" aria-hidden="true"></i><a href="">Settings</a></li>
-                    <li><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i><a href="/logout">Logout</a></li>
-                </ul>
-            </nav>
-
-            <section>
-                <div class="level__progress">
-                    <div class="level__info">
-                        <div class="info__points">{{ $user->currentScore() }}<span>points</span></div>
-                        {{-- <div class="info__text">Until next level</div> --}}
+    <div>
+        <header class="container-fluid no-padding">
+            <section id="profile" class="col-md-2">
+                <div class="mini-profile">
+                    <div class="profile__photo circle"></div>
+                    <div class="profile__info">
+                        <p class="light info__level">Noob</p>
+                        <h3><small>{{ $user->username }}</small></h3>
                     </div>
                 </div>
             </section>
-        </aside>
-        <article id="app" class="col-md-10 container">
-            @yield('content')
-        </article>
-    </main>
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
+            <section id="top" class="col-md-10">
+                <a href="{{ route('lobby.create') }}"><button class="btn">Create Lobby</button></a>
+            </section>
+        </header>
+        <main id="app" class="container-fluid no-padding">
+            <aside class="col-md-2">
+                <nav>
+                    <ul>
+                        <li><i class="fa fa-ticket fa-2x" aria-hidden="true"></i><a href="/dashboard">Dashboard</a></li>
+                        <li><i class="fa fa-user fa-2x" aria-hidden="true"></i><a href="">Profile</a></li>
+                        <li><i class="fa fa-comments-o fa-2x" aria-hidden="true"></i><a href="{{ route('messages.index') }}">Messages</a></li>
+                        <li><i class="fa fa-sliders fa-2x" aria-hidden="true"></i><a href="">Settings</a></li>
+                        <li><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i><a href="/logout">Logout</a></li>
+                    </ul>
+                </nav>
+
+                <score :user="{{ $user }}" :score="{{ $user->currentScore() }}"></score>
+            </aside>
+            <article class="col-md-10 container">
+                @yield('content')
+            </article>
+        </main>
+        <!-- Scripts -->
+        <script src="/js/app.js"></script>
+    </div>
 </body>
 </html>

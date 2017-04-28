@@ -16,6 +16,7 @@ require('./bootstrap');
 Vue.component('players', require('./components/players.vue'));
 Vue.component('chat', require('./components/chat.vue'));
 Vue.component('vote', require('./components/vote.vue'));
+Vue.component('score', require('./components/score.vue'));
 
 window.bus = new Vue();
 
